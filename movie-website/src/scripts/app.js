@@ -12,7 +12,7 @@ const movies = [
         title: "The Shawshank Redemption",
         year: 1994,
         genre: "Drama",
-        poster: "https://resizing.flixster.com/SzNzBSg0ezjiN6IEHyeZ-fF1aqU=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p15987_v_h9_at.jpg",
+        poster: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/11/the-shawshank-redemption-poster.jpg",
         description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
         director: "Frank Darabont"
     },
