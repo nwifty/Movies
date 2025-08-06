@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Wikipedia</title>
+    <title>About | Movie Wikipedia</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -17,20 +17,21 @@
         </nav>
     </header>
     <main>
-        <section class="hero">
-            <h1>Discover Movies, TV Shows, and More</h1>
-            <input id="searchInput" type="text" placeholder="Search for a movie...">
+        <section class="about-section">
+            <h1>About Movie Wikipedia</h1>
+            <p>
+                <strong>Movie Wikipedia</strong> is a modern, community-driven encyclopedia for movies and TV shows. Our mission is to help users discover, search, and learn more about their favorite films and series in a visually appealing and easy-to-use interface.
+            </p>
+            <ul>
+                <li>Browse featured and top-rated movies</li>
+                <li>Search for movies by title, genre, or director</li>
+                <li>View detailed information about each movie</li>
+                <li>Enjoy a clean, modern design with responsive layouts</li>
+            </ul>
+            <p>
+                This website is a demo project for educational purposes, built with HTML, CSS, and JavaScript.
+            </p>
         </section>
-        <section id="movie-details" class="movie-details-modal" style="display:none;">
-            <div class="modal-content" id="modalContent"></div>
-        </section>
-        <section id="featured" class="movie-grid">
-            <h2>Featured Movies</h2>
-            <div class="movies" id="moviesContainer">
-                <!-- Movie cards will be rendered here by app.js -->
-            </div>
-        </section>
-
     </main>
     <footer>
         <div class="social-links">
@@ -46,6 +47,4 @@
         </div>
         <p>&copy; 2025 Movie Wikipedia</p>
     </footer>
-    <script src="scripts/app.js"></script>
 </body>
-</html>

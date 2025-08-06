@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Wikipedia</title>
+    <title>Top Rated Movies | Movie Wikipedia</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -18,19 +18,18 @@
     </header>
     <main>
         <section class="hero">
-            <h1>Discover Movies, TV Shows, and More</h1>
-            <input id="searchInput" type="text" placeholder="Search for a movie...">
+            <h1>Top Rated Movies</h1>
+            <input id="searchInput" type="text" placeholder="Search top rated movies...">
         </section>
         <section id="movie-details" class="movie-details-modal" style="display:none;">
             <div class="modal-content" id="modalContent"></div>
         </section>
-        <section id="featured" class="movie-grid">
-            <h2>Featured Movies</h2>
-            <div class="movies" id="moviesContainer">
-                <!-- Movie cards will be rendered here by app.js -->
+        <section id="top-rated" class="movie-grid">
+            <h2>Top Rated Movies</h2>
+            <div class="movies" id="topRatedContainer">
+                <!-- Top rated movie cards will be rendered here by app.js -->
             </div>
         </section>
-
     </main>
     <footer>
         <div class="social-links">
