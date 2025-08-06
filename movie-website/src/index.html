@@ -3,33 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Wikipedia</title>
+    <title>Netflix Movie Database</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <header>
-        <h1>Movie Wikipedia</h1>
-        <nav>
-            <a href="#">Home</a> |
-            <a href="#">Top Movies</a> |
-            <a href="#">Genres</a> |
-            <a href="#">About</a>
+    <header class="netflix-header">
+        <div class="logo">NETFLIX</div>
+        <nav id="navbar">
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Movies</a>
+            <a href="#">New & Popular</a>
+            <a href="#">My List</a>
         </nav>
     </header>
     <main>
-        <section id="movie-list">
+        <section class="hero">
+            <h1>Unlimited movies, TV shows, and more.</h1>
+            <p>Watch anywhere. Cancel anytime.</p>
+            <button class="cta-btn">Get Started</button>
+        </section>
+        <section id="movie-list" class="movie-grid">
             <h2>Featured Movies</h2>
-            <!-- Movie list will be rendered here -->
+            <div class="movies">
+                <!-- Movie cards will be rendered here by app.js -->
+            </div>
         </section>
         <section id="about">
-            <h2>About Movie Wikipedia</h2>
+            <h2>About This Project</h2>
             <p>
-                Movie Wikipedia is a collaborative encyclopedia about movies, actors, directors, and everything related to cinema. Explore, learn, and contribute!
+                The Netflix Movie Database is a web application that allows users to explore a collection of movies, view details, and learn more about their favorite films.
             </p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 Movie Wikipedia</p>
+        <p>&copy; 2025 Netflix Movie Database</p>
     </footer>
     <script src="scripts/app.js"></script>
 </body>
