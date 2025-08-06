@@ -12,6 +12,12 @@ body {
     min-height: 100vh;
 }
 
+input {
+    background:#141414;
+    color: #fff;
+    font-size: 2.2rem;
+}
+
 /* Header */
 .netflix-header {
     background: #141414;
