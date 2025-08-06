@@ -1,0 +1,157 @@
+/* Reset some default styles */
+body, h1, h2, p, a, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #141414;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Header */
+.netflix-header {
+    background: #141414;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    color: #e50914;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 18px;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+#navbar a:hover {
+    color: #e50914;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(90deg, #141414 60%, #222 100%);
+    padding: 60px 40px 40px 40px;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 22px;
+}
+
+.cta-btn {
+    background: #e50914;
+    color: #fff;
+    border: none;
+    padding: 14px 36px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.cta-btn:hover {
+    background: #b0060f;
+}
+
+/* Movie Grid */
+.movie-grid {
+    padding: 40px;
+}
+
+.movie-grid h2 {
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 28px;
+}
+
+/* Movie Card Example */
+.movie-card {
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.movie-card .movie-info {
+    padding: 16px;
+}
+
+.movie-card .movie-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.movie-card .movie-year {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+/* About Section */
+#about {
+    background: #181818;
+    padding: 32px 40px;
+    margin-top: 40px;
+    border-radius: 8px;
+}
+
+#about h2 {
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+}
+
+#about p {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 18px 0;
+    background: #141414;
+    color: #888;
+    font-size: 1rem;
+    margin-top: 40px;
+}
