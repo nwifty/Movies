@@ -1,4 +1,4 @@
-# Movie Wikipedia Project
+# Moviepedia Project
 
 A modern movie encyclopedia web application for browsing, searching, and viewing details about movies and TV shows. The project includes a frontend built with HTML, CSS, and JavaScript, and a backend using Node.js, Express, and PostgreSQL.
 
@@ -7,11 +7,11 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
 ```
 .
 ├── .gitignore
+├── README.md                  # Project documentation
 ├── database.js                # Express server and PostgreSQL API
 ├── package.json               # Root npm configuration (backend)
 └── movie-website/
     ├── package.json           # Frontend npm configuration
-    ├── README.md              # Frontend documentation
     └── src/
         ├── index.html         # Home page
         ├── featured.html      # Featured movies page
@@ -28,8 +28,8 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
 ## Features
 
 - Browse featured and top-rated movies
-- Search movies by title, genre, or director
-- View detailed information in a modal
+- Search movies by title
+- View detailed information of each movie
 - Responsive, modern metallic-glass UI
 - Backend API for movie data (Node.js + PostgreSQL)
 
