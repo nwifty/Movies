@@ -8,7 +8,7 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
 - Jan
 - Joshua
 - Neale
-- 
+  
 ## Project Structure
 
 ```
