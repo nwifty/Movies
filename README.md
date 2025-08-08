@@ -3,13 +3,12 @@
 A modern movie encyclopedia web application for browsing, searching, and viewing details about movies and TV shows. The project includes a frontend built with HTML, CSS, and JavaScript, and a backend using Node.js, Express, and PostgreSQL.
 
 ## Group Members
-#Hao Weng
-#Jan 
-#Syazwan
-#Joshua 
-#Neale
-
-
+- Hao Weng
+- Syazwan
+- Jan
+- Joshua
+- Neale
+- 
 ## Project Structure
 
 ```
