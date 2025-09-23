@@ -2,21 +2,33 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const { Client } = require('pg');
+const { Pool } = require('pg');
 
 // DB Config
-const client = new Client({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: 5432,
-    ssl: false
-});
+let pool
+if (!process.env.DATABASE_URL) {
+    pool = new Pool({
+        user: process.env.DB_USER || 'postgres',
+        host: process.env.DB_HOST || '127.0.0.1', 
+        database: process.env.DB_DATABASE || 'tdp',
+        password: process.env.DB_PASSWORD || 'postgres',
+        port: process.env.DB_PORT || 5432,
+        ssl: process.env.DB_SSL === 'true' ? true : false,
+    });
+} else {
+    // For production environments like Vercel
+    pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    });
+}
 
 // Connect to PostgreSQL
-client.connect()
-    .then(() => console.log('✅ Connected to PostgreSQL'))
-    .catch(err => console.error('❌ Connection error:', err.stack));
+// client.connect()
+//     .then(() => console.log('✅ Connected to PostgreSQL'))
+//     .catch(err => console.error('❌ Connection error:', err.stack));
 
 // Middleware
 app.use(express.json());
@@ -31,7 +43,7 @@ app.use((req, res, next) => {
 // ROUTES
 app.get('/api/movies/:show_id', async (req, res) => {
     try {
-        const result = await client.query(
+        const result = await pool.query(
             'SELECT * FROM netflix_shows WHERE show_id = $1',
             [req.params.show_id]
         );
@@ -57,7 +69,7 @@ app.post('/api/movies', async (req, res) => {
     } = req.body;
 
     try {
-        const result = await client.query(`
+        const result = await pool.query(`
             INSERT INTO netflix_shows (
                 show_id, title, director, cast_members, country, date_added,
                 release_year, rating, duration, listed_in, description
@@ -78,7 +90,7 @@ app.get('/netflix/:title', async (req, res) => {
     const searchTerm = `%${req.params.title}%`;
 
     try {
-        const result = await client.query(
+        const result = await pool.query(
             'SELECT * FROM netflix_shows WHERE title ILIKE $1',
             [searchTerm]
         );
