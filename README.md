@@ -15,9 +15,16 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
 .
 ├── .gitignore
 ├── README.md                  # Project documentation
-├── database.js                # Express server and PostgreSQL API
-├── package.json               # Root npm configuration (backend)
-└── movie-website/
+├── docker-compose.yml
+├── backend/
+| └── app.js
+| └── package.json           # Backend npm configuration
+| └── Dockerfile
+|
+├── db/
+| └── netflix.sql 
+|
+└── frontend/
     ├── package.json           # Frontend npm configuration
     └── src/
         ├── index.html         # Home page
@@ -47,6 +54,12 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
 ```sh
 git clone <repository-url>
 cd Movies
+```
+
+### 1B. Using Docker (OPTIONAL)
+```sh
+# If using Docker, continue with this step and skip the rest. Else, skip this step.
+docker-compose up --build
 ```
 
 ### 2. Install backend dependencies

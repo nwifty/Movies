@@ -1,0 +1,44 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+      - DB_NAME=tdp
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+      
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16-alpine
+    container_name: my-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=tdp
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U postgres -d tdp' ]
+      interval: 10s
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/netflix.sql:/docker-entrypoint-initdb.d/netflix.sql:ro
+
+volumes:
+  pgdata:
