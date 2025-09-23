@@ -1,17 +1,16 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const path = require('path');
 const { Client } = require('pg');
 
 // DB Config
 const client = new Client({
-    user: 'movie_postgresql_user',
-    host: 'dpg-d29g1pili9vc73fmen3g-a.singapore-postgres.render.com',
-    database: 'movie_postgresql',
-    password: '9FJzzWOCTW0w1TQPx0nQsOc5jyqfcSAs',
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
     port: 5432,
-    ssl: { rejectUnauthorized: false }
+    ssl: false
 });
 
 // Connect to PostgreSQL
@@ -21,11 +20,15 @@ client.connect()
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'movie-website/src')));
-
+// log all req
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`); 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
 // ROUTES
-
-// Get movie by show_id
 app.get('/api/movies/:show_id', async (req, res) => {
     try {
         const result = await client.query(
@@ -38,7 +41,6 @@ app.get('/api/movies/:show_id', async (req, res) => {
     }
 });
 
-// Add new movie
 app.post('/api/movies', async (req, res) => {
     const {
         show_id,
@@ -72,7 +74,6 @@ app.post('/api/movies', async (req, res) => {
     }
 });
 
-// Search by title (simple search, no poster handling)
 app.get('/netflix/:title', async (req, res) => {
     const searchTerm = `%${req.params.title}%`;
 
@@ -94,16 +95,7 @@ app.get('/netflix/:title', async (req, res) => {
     }
 });
 
-// Fallback route for frontend routing
-app.get(/^\/(?!api|netflix).*/, (req, res) => {
-    res.sendFile(path.join(__dirname, 'movie-website/src/index.html'));
-});
-
 // Start server
 app.listen(port, () => {
-    console.log(`🚀 Server running at http://localhost:${port}`);
+    console.log(`🚀 API server running at http://localhost:${port}`);
 });
-
-
-
-
