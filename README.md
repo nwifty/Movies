@@ -15,9 +15,16 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
 .
 ├── .gitignore
 ├── README.md                  # Project documentation
-├── database.js                # Express server and PostgreSQL API
-├── package.json               # Root npm configuration (backend)
-└── movie-website/
+├── docker-compose.yml
+├── backend/
+| └── app.js
+| └── package.json           # Backend npm configuration
+| └── Dockerfile
+|
+├── db/
+| └── netflix.sql 
+|
+└── frontend/
     ├── package.json           # Frontend npm configuration
     └── src/
         ├── index.html         # Home page
