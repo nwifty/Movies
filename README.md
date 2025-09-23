@@ -49,6 +49,12 @@ git clone <repository-url>
 cd Movies
 ```
 
+### 1B. Using Docker (OPTIONAL)
+```sh
+# If using Docker, continue with this step and skip the rest. Else, skip this step.
+docker-compose up --build
+```
+
 ### 2. Install backend dependencies
 
 ```sh
