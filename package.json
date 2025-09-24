@@ -1,0 +1,17 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "A modern movie encyclopedia web application for browsing, searching, and viewing details about movies and TV shows. The project includes a frontend built with HTML, CSS, and JavaScript, and a backend using Node.js, Express, and PostgreSQL.",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e": "docker-compose up -d && npx wait-on http://localhost:8080 && npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.5.2",
+    "wait-on": "^9.0.1"
+  }
+}
