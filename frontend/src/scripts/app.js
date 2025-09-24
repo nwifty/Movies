@@ -1,6 +1,3 @@
-// set base url for fetch requests to port 3000
-const BASE_URL = 'http://localhost:3000';
-
 // Render movie cards
 function renderMovies(movieList) {
     const container = document.querySelector('.movies');
@@ -88,7 +85,7 @@ async function searchAndRender(query, renderFunction) {
     }
 
     try {
-        const response = await fetch(BASE_URL + `/netflix/${encodeURIComponent(query)}`);
+        const response = await fetch(API_BASE + `/netflix/${encodeURIComponent(query)}`);
         const data = await response.json();
 
         if (Array.isArray(data)) {
