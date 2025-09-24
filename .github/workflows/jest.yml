@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: '20'
       - name: Install dependencies
-        run: npm install
+        run: npm install 
+      - name: Install Jest and Supertest
+        run: npm install --save-dev jest supertest
       - name: Run Jest tests
         run: npm test
