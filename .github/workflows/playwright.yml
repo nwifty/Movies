@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Start Docker Compose
-      run: docker-compose up -d
+      run: docker compose up -d --build
 
     - name: Wait for frontend to be ready
       run: npx wait-on http://localhost:8080
