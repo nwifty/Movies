@@ -1,5 +1,5 @@
 # backend/Dockerfile
-FROM node:20
+FROM node:24
 
 WORKDIR /app
 
