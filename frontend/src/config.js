@@ -1,1 +1,1 @@
-const API_BASE = 'https://tdp-backend.vercel.app/';
+const API_BASE = 'https://tdp-backend.vercel.app';
