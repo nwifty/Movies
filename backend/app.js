@@ -102,6 +102,16 @@ app.get('/netflix/:title', async (req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
-    console.log(`🚀 API server running at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`🚀 API server running at http://localhost:${port}`);
+// });
+
+// jest testing -- prevents server from running during tests
+if (process.env.NODE_ENV !== 'test') {
+   app.listen(port, () => {
+       console.log(`🚀 API server running at http://localhost:${port}`);
+   });
+}
+
+// export app for testing
+module.exports = app;
