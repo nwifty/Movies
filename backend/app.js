@@ -101,7 +101,14 @@ app.get('/netflix/:title', async (req, res) => {
     }
 });
 
-// Start server
-app.listen(port, () => {
+// Start server only if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
     console.log(`🚀 API server running at http://localhost:${port}`);
-});
+  });
+}
+
+// Export app instance for testing
+module.exports = app;
+
+
