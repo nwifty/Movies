@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const { Client } = require('pg');
 const { Pool } = require('pg');
 
 // DB Config
@@ -24,11 +23,6 @@ if (!process.env.DATABASE_URL) {
         }
     });
 }
-
-// Connect to PostgreSQL
-// client.connect()
-//     .then(() => console.log('✅ Connected to PostgreSQL'))
-//     .catch(err => console.error('❌ Connection error:', err.stack));
 
 // Middleware
 app.use(express.json());
