@@ -1,6 +1,7 @@
+
 # Moviepedia Project
 
-A modern movie encyclopedia web application for browsing, searching, and viewing details about movies and TV shows. The project includes a frontend built with HTML, CSS, and JavaScript, and a backend using Node.js, Express, and PostgreSQL.
+Moviepedia is a full-stack web application for browsing, searching, and viewing details about movies and TV shows. It features a modern, responsive UI and a RESTful backend API. The project uses Node.js, Express, PostgreSQL, and vanilla JS/HTML/CSS for the frontend, with Docker support for easy deployment.
 
 ## Group Members
 - Lin Hao Weng
@@ -39,68 +40,111 @@ A modern movie encyclopedia web application for browsing, searching, and viewing
             └── MovieList.js   # (React) Movie list component
 ```
 
+
 ## Features
 
+### Frontend
 - Browse featured and top-rated movies
-- Search movies by title
-- View detailed information of each movie
+- Search movies by title, genre, or director
+- View detailed information in a modal
 - Responsive, modern metallic-glass UI
-- Backend API for movie data (Node.js + PostgreSQL)
+- Pages: Home, Featured, Top Rated, About
+
+### Backend
+- RESTful API for movie data
+- PostgreSQL database integration
+- Endpoints for searching, fetching by ID, and adding movies
+
+### Database
+- PostgreSQL table: `netflix_shows` (see `db/netflix.sql`)
+
 
 ## Getting Started
 
 ### 1. Clone the repository
-
 ```sh
 git clone <repository-url>
 cd Movies
 ```
 
-### 1B. Using Docker (OPTIONAL)
+### 2. Using Docker (recommended)
 ```sh
-# If using Docker, continue with this step and skip the rest. Else, skip this step.
 docker-compose up --build
 ```
+This will start the backend (port 3000), frontend (port 8080), and PostgreSQL database (port 5432).
 
-### 2. Install backend dependencies
+### 3. Manual setup (without Docker)
 
+#### Backend
 ```sh
+cd backend
 npm install
+node app.js
 ```
+Backend runs at `http://localhost:3000`.
 
-### 3. Install frontend dependencies
-
+#### Frontend
 ```sh
-cd movie-website
+cd frontend
 npm install
-```
-
-### 4. Run the backend server
-
-```sh
-node ../database.js
-```
-
-The backend will be available at `http://localhost:3000`.
-
-### 5. Start the frontend (development)
-
-```sh
 npm start
 ```
+Frontend runs at `http://localhost:8080`.
 
-This uses `live-server` to serve the frontend at `http://127.0.0.1:8080` (or similar).
+#### Database
+Import the schema from `db/netflix.sql` into your PostgreSQL instance.
 
-### 6. Open the website
+### 4. Open the website
+Visit `http://localhost:8080` for the frontend UI, or `http://localhost:3000` for the backend API.
 
-Visit `http://localhost:3000` or open `movie-website/src/index.html` in your browser.
 
 ## API Endpoints
 
 - `GET /api/movies/:show_id` — Fetch movie by ID
 - `POST /api/movies` — Add a new movie
+- `GET /netflix/:title` — Search movies by title (partial match)
 
-See [`database.js`](database.js) for implementation details.
+See [`backend/app.js`](backend/app.js) for implementation details.
+
+
+## Database Schema
+
+The main table is `netflix_shows`:
+```sql
+CREATE TABLE public.netflix_shows (
+    show_id text NOT NULL,
+    type text,
+    title text,
+    director text,
+    cast_members text,
+    country text,
+    date_added date,
+    release_year integer,
+    rating text,
+    duration text,
+    listed_in text,
+    description text
+);
+```
+See `db/netflix.sql` for full schema and sample data.
+
+
+## Testing
+
+### Backend
+- Automated tests with Jest and Supertest (`backend/app.test.js`).
+- Run tests:
+    ```sh
+    cd backend
+    npm test
+    ```
+
+### Frontend
+- No automated tests yet. Placeholder script in `frontend/package.json`.
+
+## Docker
+
+Docker Compose sets up backend, frontend, and PostgreSQL database. See `docker-compose.yml` for details.
 
 ## Contributing
 
