@@ -1,7 +1,9 @@
 
-# Moviepedia Project
 
-Moviepedia is a full-stack web application for browsing, searching, and viewing details about movies and TV shows. It features a modern, responsive UI and a RESTful backend API. The project uses Node.js, Express, PostgreSQL, and vanilla JS/HTML/CSS for the frontend, with Docker support for easy deployment.
+
+# Movie Wikipedia
+
+Movie Wikipedia is a full-stack web application for browsing, searching, and viewing details about movies and TV shows. It features a modern, responsive UI and a RESTful backend API. The project uses Node.js, Express, PostgreSQL, and vanilla JS/HTML/CSS for the frontend, with Docker support for easy deployment and Playwright for end-to-end testing.
 
 ## Group Members
 - Lin Hao Weng
@@ -9,93 +11,65 @@ Moviepedia is a full-stack web application for browsing, searching, and viewing 
 - Magtira Jan Gabriel Luistro
 - Joshua Man Kwan Ting
 - Neale Tham Geng Chen
-  
-## Project Structure
 
+## Project Structure
 ```
-.
-├── .gitignore
-├── README.md                  # Project documentation
-├── docker-compose.yml
-├── backend/
-| └── app.js
-| └── package.json           # Backend npm configuration
-| └── Dockerfile
-|
-├── db/
-| └── netflix.sql 
-|
-└── frontend/
-    ├── package.json           # Frontend npm configuration
-    └── src/
-        ├── index.html         # Home page
-        ├── featured.html      # Featured movies page
-        ├── top-rated.html     # Top rated movies page
-        ├── about.html         # About page
-        ├── styles/
-        │   └── main.css       # Main stylesheet
-        ├── scripts/
-        │   └── app.js         # Main JavaScript logic
-        └── components/
-            └── MovieList.js   # (React) Movie list component
+Movies/
+├── backend/           # Node.js + Express backend
+├── db/                # Database files (PostgreSQL, SQL scripts)
+├── frontend/          # Frontend (HTML, CSS, JS)
+├── tests/             # Playwright end-to-end tests
+├── docker-compose.yml # Docker Compose setup
+├── package.json       # Project scripts and dependencies
+└── ...
 ```
+
 
 
 ## Features
 
-### Frontend
+
+## Features
 - Browse featured and top-rated movies
-- Search movies by title, genre, or director
+- Search for movies by title, genre, or director
 - View detailed information in a modal
 - Responsive, modern metallic-glass UI
-- Pages: Home, Featured, Top Rated, About
+- RESTful API for movie data (Node.js + PostgreSQL)
+- Automated end-to-end testing with Playwright
 
-### Backend
-- RESTful API for movie data
-- PostgreSQL database integration
-- Endpoints for searching, fetching by ID, and adding movies
-
-### Database
-- PostgreSQL table: `netflix_shows` (see `db/netflix.sql`)
 
 
 ## Getting Started
 
-### 1. Clone the repository
-```sh
-git clone <repository-url>
-cd Movies
-```
+### Prerequisites
+- [Docker](https://www.docker.com/)
+- [Node.js](https://nodejs.org/) (for running tests locally)
 
-### 2. Using Docker (recommended)
-```sh
-docker-compose up --build
-```
-This will start the backend (port 3000), frontend (port 8080), and PostgreSQL database (port 5432).
+### Running the App Locally
+1. Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd Movies
+    ```
+2. Start all services (frontend, backend, db) using Docker Compose:
+    ```bash
+    docker-compose up --build
+    ```
+3. Access the frontend at [http://localhost:8080](http://localhost:8080)
 
-### 3. Manual setup (without Docker)
+### Running End-to-End Tests
+1. Install dependencies:
+    ```bash
+    npm install
+    ```
+2. Run the automated test (this will start Docker Compose, wait for the site, and run Playwright):
+    ```bash
+    npm run test:e2e
+    ```
 
-#### Backend
-```sh
-cd backend
-npm install
-node app.js
-```
-Backend runs at `http://localhost:3000`.
-
-#### Frontend
-```sh
-cd frontend
-npm install
-npm start
-```
-Frontend runs at `http://localhost:8080`.
-
-#### Database
-Import the schema from `db/netflix.sql` into your PostgreSQL instance.
-
-### 4. Open the website
-Visit `http://localhost:8080` for the frontend UI, or `http://localhost:3000` for the backend API.
+## Continuous Integration (CI)
+- GitHub Actions is configured to automatically build the app and run Playwright tests on every push or pull request to `main`.
+- See `.github/workflows/playwright.yml` for details.
 
 
 ## API Endpoints
@@ -139,17 +113,22 @@ See `db/netflix.sql` for full schema and sample data.
     npm test
     ```
 
-### Frontend
-- No automated tests yet. Placeholder script in `frontend/package.json`.
+
+### End-to-End (E2E) Tests
+- Playwright tests are in the `tests/` directory.
+- To run all E2E tests (with Docker Compose auto-start):
+    ```bash
+    npm run test:e2e
+    ```
+
 
 ## Docker
 
 Docker Compose sets up backend, frontend, and PostgreSQL database. See `docker-compose.yml` for details.
 
-## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-
-MIT
+[MIT](LICENSE)
