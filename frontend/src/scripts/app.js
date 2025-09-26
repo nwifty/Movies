@@ -113,17 +113,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.hero input');
     const isTopRatedPage = !!document.querySelector('#topRatedTable');
 
-    if (isTopRatedPage) {
-        // Top Rated Page
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value;
+    // common handler
+    const handleSearch = () => {
+        const query = searchInput.value.trim();
+        if (query !== '') {
+        if (isTopRatedPage) {
             searchAndRender(query, renderTopRatedTable);
-        });
-    } else {
-        // Home or Featured Page
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value;
+        } else {
             searchAndRender(query, renderMovies);
-        });
-    }
+        }
+        }
+    };
+
+    // listen for Enter key
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+        event.preventDefault(); // stop form submission if inside a form
+        handleSearch();
+        }
+    });
+    // if (isTopRatedPage) {
+    //     // Top Rated Page
+    //     searchInput.addEventListener('input', () => {
+    //         const query = searchInput.value;
+    //         searchAndRender(query, renderTopRatedTable);
+    //     });
+    // } else {
+    //     // Home or Featured Page
+    //     searchInput.addEventListener('input', () => {
+    //         const query = searchInput.value;
+    //         searchAndRender(query, renderMovies);
+    //     });
+    // }
 });
